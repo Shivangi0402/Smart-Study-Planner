@@ -18,7 +18,7 @@ Notifications: Web Notifications API + Sound Alerts<br>
 PDF Generation: jsPDF<br>
 <br>
 📂 Project Structure<br>
-📦 Smart-Study-Planner<br>
+📦 Edu-Planner<br>
 ├── index.html       # Main UI layout<br>
 ├── styles.css       # Styling & responsive design<br>
 ├── script.js        # Core functionality (task CRUD, reminders, PDF, stats)<br>
