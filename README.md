@@ -27,5 +27,5 @@ PDF Generation: jsPDF<br>
 <br>
 ⚡ How to Run<br>
 1. Clone the repo:<br>
-
+git clone https://github.com/Shivangi0402/Smart-Study-Planner.git
 2. Open index.html in any modern browser.<br>
