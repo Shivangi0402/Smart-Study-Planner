@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- ===== Header with logo and buttons ===== -->
+      <header>
+        <div class="brand">
+          <div class="logo"></div>
+          <div>
+            <h1>Edu Planner</h1>
+            <p class="lead">
+              Create goals, set reminders, visualize your timeline — stay
+              productive.
+            </p>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="toggleView">Toggle Timeline</button>
+          <button class="btn primary" id="openAdd">+ New Task</button>
+        </div>
+      </header>
+
+      <!-- ===== Main layout ===== -->
+      <div class="layout">
+        <!-- main left panel -->
+        <div class="panel" id="mainPanel">
+          <h2>Today's Tasks</h2>
+
+          <!-- add task form -->
+          <div id="addForm" style="display: none; margin-top: 12px">
+            <div class="add-task">
+              <input
+                class="form-col"
+                id="title"
+                placeholder="Task title (e.g. Read OS chapter)"
+              />
+              <input type="date" id="date" class="form-col" />
+              <input type="time" id="time" />
+              <select id="priority">
+                <option value="low">Low priority</option>
+                <option value="med">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <input id="subject" placeholder="Subject (Math)" />
+              <input
+                id="duration"
+                placeholder="Est. duration (mins)"
+                type="number"
+              />
+              <input id="color" type="color" value="#7c3aed" />
+            </div>
+
+            <div style="margin-top: 10px; display: flex; gap: 10px">
+              <textarea
+                id="notes"
+                placeholder="Notes / description..."
+              ></textarea>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                  min-width: 160px;
+                "
+              >
+                <label style="font-size: 12px; color: var(--muted)"
+                  >Remind me:</label
+                >
+                <select id="remindOffset">
+                  <option value="0">At time</option>
+                  <option value="5">5 minutes before</option>
+                  <option value="15">15 minutes before</option>
+                  <option value="60">1 hour before</option>
+                </select>
+                <button class="btn primary" id="saveTask">Save Task</button>
+                <button class="btn ghost" id="cancelAdd">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- tasks list -->
+          <div id="listWrap">
+            <div class="tasks-list" id="tasks"></div>
+          </div>
+
+          <!-- timeline -->
+          <div class="timeline" id="timeline">
+            <h2 style="margin-top: 12px">Timeline (Next 7 days)</h2>
+            <div class="timeline-row" id="daysRow" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- right panel (overview + stats) -->
+        <aside class="panel">
+          <h2>Overview</h2>
+
+          <div style="margin-top: 10px" class="stats-grid">
+            <div class="stat">
+              <h3 id="statTotal">0</h3>
+              <p>Total tasks</p>
+            </div>
+            <div class="stat">
+              <h3 id="statToday">0</h3>
+              <p>Today's tasks</p>
+            </div>
+            <div class="stat">
+              <h3 id="statDone">0%</h3>
+              <p>Completed</p>
+            </div>
+            <div class="stat">
+              <h3 id="statFocus">0</h3>
+              <p>Estimated min</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 14px">
+            <h3 style="margin: 0 0 8px 0">Progress</h3>
+            <div class="progress-bar">
+              <div class="progress-fill" id="overallFill"></div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap"
+          >
+            <button class="btn" id="downloadPdfBtn">
+              Download Weekly Timetable
+            </button>
+          </div>
+        </aside>
+      </div>
+
+      <!-- footer -->
+      <footer>✨Made by Shivangi Sinha✨</footer>
+    </div>
+
+    <!-- reminder popup banner -->
+    <div id="reminderBanner" class="reminder-banner" style="display: none">
+      <div class="reminder-content">
+        <span id="reminderText"></span>
+        <button id="closeBanner">✖</button>
+      </div>
+    </div>
+
+    <!-- reminder sound -->
+    <audio id="ding" src="notification.mp3" preload="auto"></audio>
+
+    <!-- PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
